@@ -7,46 +7,53 @@
 <html>
 <head>
     <c:import url="fragment/bootstrap_style.jsp"/>
-    <fmt:message key="login.title" var="title" bundle="${text}"/>
     <link rel="stylesheet" href="css/login.css" type="text/css"/>
+    <fmt:message key="login.title" var="title" bundle="${text}"/>
     <title>${title}</title>
 </head>
 <body>
 <c:import url="fragment/header.jsp"/>
 <div class="login-container">
     <div>
-        <h2>Please sign in</h2>
-        <form id="loginForm" class="needs-validation" action="controller" method="post" novalidate>
+        <fmt:message key="login.message" var="message" bundle="${text}"/>
+        <h2>${message}</h2>
+        <form id="loginForm" class="needs-validation" action="controller" onsubmit="return false" method="post" novalidate>
             <input type="hidden" name="command" value="login">
             <div class="form-group">
-                <label for="email">Email address</label>
+                <fmt:message key="login.email.label" var="emailLabel" bundle="${text}"/>
+                <label for="email">${emailLabel}</label>
+                <fmt:message key="login.email.placeholder" var="emailPlaceholder" bundle="${text}"/>
                 <input type="email" name="email" value="" class="form-control" id="email"
-                       placeholder="Enter email" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
+                       placeholder="${emailPlaceholder}" required pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$">
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
+                <fmt:message key="login.password.label" var="passwordLabel" bundle="${text}"/>
+                <label for="password">${passwordLabel}</label>
+                <fmt:message key="login.password.placeholder" var="passwordPlaceholder" bundle="${text}"/>
                 <input type="password" name="password" value="" class="form-control" id="password"
-                       placeholder="Enter password" aria-describedby="passwordHelp">
-                <small id="passwordHelp" class="form-text text-muted">Password should be more then 8 less then 40
-                    symbols</small>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
+                       placeholder="${passwordPlaceholder}" aria-describedby="passwordHelp" required pattern="[a-zA-Z0-9@#$%!]{8,40}">
+                <fmt:message key="login.password.help" var="passwordHelp" bundle="${text}"/>
+                <small id="passwordHelp" class="form-text text-muted">${passwordHelp}</small>
             </div>
             <div class="login-item">
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="rememberMe">
-                    <label class="form-check-label" for="rememberMe">Remember me</label>
-                </div>
-                <button type="submit" id="submit" class="btn btn-primary">Sign in</button>
+                <fmt:message key="login.submit" var="submit" bundle="${text}"/>
+                <button type="submit" id="submit" class="btn btn-primary">${submit}</button>
             </div>
         </form>
+        <br/>
+        <c:if test="${not empty errorEmailOrPassword}">
+            <div class="alert alert-danger" role="alert">
+                    ${errorEmailOrPassword}
+            </div>
+        </c:if>
+        <c:if test="${not empty errorUser}">
+            <div class="alert alert-danger" role="alert">
+                    ${errorUser}
+            </div>
+        </c:if>
     </div>
 </div>
-<script src="js/login.js"></script>
 <c:import url="fragment/bootstrap_script.jsp"/>
+<script src="js/login.js"></script>
 </body>
 </html>

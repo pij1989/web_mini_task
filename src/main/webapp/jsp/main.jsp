@@ -29,6 +29,7 @@
             <fmt:message key="main.submit" var="submit" bundle="${text}"/>
             <button type="submit" class="btn btn-primary">${submit}</button>
         </form>
+        <br/>
         <c:if test="${not empty errorRadiusPassMessage}">
             <div class="alert alert-danger" role="alert">
                     ${errorRadiusPassMessage}

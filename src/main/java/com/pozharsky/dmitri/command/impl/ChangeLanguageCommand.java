@@ -38,6 +38,6 @@ public class ChangeLanguageCommand implements Command {
                 MessageManager.INSTANCE.changeLocale(new Locale(LANGUAGE_RU, COUNTRY_RU));
             }
         }
-        return PagePath.MAIN;
+        return PagePath.LOGIN;
     }
 }

@@ -16,7 +16,8 @@
                     <input type="hidden" name="command" value="change_language"/>
                     <div class="dropdown">
                         <fmt:message key="header.button.language" var="language" bundle="${text}"/>
-                        <button class="btn btn-success dropdown-toggle mx-2" type="button" id="language" data-toggle="dropdown"
+                        <button class="btn btn-success dropdown-toggle mx-2" type="button" id="language"
+                                data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                             ${language}
                         </button>
@@ -27,6 +28,7 @@
                     </div>
                 </form>
                 <form class="form-inline my-2 my-lg-0">
+                    <input type="hidden" name="command" value="to_login_page_command">
                     <fmt:message key="header.button.signin" var="signin" bundle="${text}"/>
                     <button class="btn btn-outline-success mx-2 my-2 my-sm-0" type="submit">${signin}</button>
                     <fmt:message key="header.button.signup" var="signup" bundle="${text}"/>

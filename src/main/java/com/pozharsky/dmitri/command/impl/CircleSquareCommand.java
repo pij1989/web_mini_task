@@ -5,6 +5,7 @@ import com.pozharsky.dmitri.constant.PagePath;
 import com.pozharsky.dmitri.constant.RequestAttribute;
 import com.pozharsky.dmitri.constant.RequestParameter;
 import com.pozharsky.dmitri.manager.MessageManager;
+import com.pozharsky.dmitri.service.CircleService;
 import com.pozharsky.dmitri.validator.NumberValidator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,10 +14,11 @@ public class CircleSquareCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         NumberValidator numberValidator = NumberValidator.INSTANCE;
+        CircleService circleService = CircleService.INSTANCE;
         String value = request.getParameter(RequestParameter.RADIUS);
         if (numberValidator.isNumber(value)) {
             double radius = Double.parseDouble(value);
-            double square = calculateSquare(radius);
+            double square = circleService.defineSquare(radius);
             request.setAttribute(RequestAttribute.SQUARE, square);
             return PagePath.CIRCLE_SQUARE_RESULT;
         } else {
@@ -25,7 +27,5 @@ public class CircleSquareCommand implements Command {
         }
     }
 
-    private double calculateSquare(double radius) {
-        return Math.PI * radius * radius;
-    }
+
 }
