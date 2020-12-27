@@ -19,12 +19,17 @@ public class ControllerServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(ControllerServlet.class);
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        processRequest(req, resp);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.info("We received request from URI: " + request.getRequestURI() + " content type: " + request.getContentType() + " character encoding: " + request.getCharacterEncoding());
+        logger.info("We received request from URI: " + request.getRequestURI() + " content type: " + request.getContentType() + " method: " + request.getMethod());
         CommandFactory commandFactory = new CommandFactory();
         Optional<Command> optionalCommand = commandFactory.defineCommand(request);
         Command command = optionalCommand.orElseThrow();
