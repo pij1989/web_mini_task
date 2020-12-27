@@ -13,6 +13,7 @@
 <body>
 <fmt:message key="result.message" var="message"/>
 <h1>${message} ${square}</h1>
+<h3>${text}</h3>
 <c:import url="fragment/bootstrap_script.jsp"/>
 </body>
 </html>

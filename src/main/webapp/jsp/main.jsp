@@ -25,6 +25,7 @@
                 <fmt:message key="main.placeholder" var="placeholder" bundle="${text}"/>
                 <input type="text" class="form-control" name="radius" value="" id="inputRadius"
                        placeholder="${placeholder}"/>
+                <input type="text"class="form-control" name="text" value=""/>
             </div>
             <fmt:message key="main.submit" var="submit" bundle="${text}"/>
             <button type="submit" class="btn btn-primary">${submit}</button>
