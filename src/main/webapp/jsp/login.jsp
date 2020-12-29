@@ -25,6 +25,7 @@
                 <fmt:message key="login.email.placeholder" var="emailPlaceholder" bundle="${text}"/>
                 <input type="email" name="email" value="" class="form-control" id="email"
                        placeholder="${emailPlaceholder}" required pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$">
+                <div id="emailValidationMessage"></div>
             </div>
             <div class="form-group">
                 <fmt:message key="login.password.label" var="passwordLabel" bundle="${text}"/>
@@ -33,6 +34,7 @@
                 <input type="password" name="password" value="" class="form-control" id="password"
                        placeholder="${passwordPlaceholder}" aria-describedby="passwordHelp" required pattern="[a-zA-Z0-9@#$%!]{8,40}">
                 <fmt:message key="login.password.help" var="passwordHelp" bundle="${text}"/>
+                <div id="passwordValidationMessage"></div>
                 <small id="passwordHelp" class="form-text text-muted">${passwordHelp}</small>
             </div>
             <div class="login-item">
