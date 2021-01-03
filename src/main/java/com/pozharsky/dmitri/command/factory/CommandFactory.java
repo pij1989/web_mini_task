@@ -2,7 +2,7 @@ package com.pozharsky.dmitri.command.factory;
 
 import com.pozharsky.dmitri.command.Command;
 import com.pozharsky.dmitri.command.CommandType;
-import com.pozharsky.dmitri.constant.RequestParameter;
+import com.pozharsky.dmitri.command.RequestParameter;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;

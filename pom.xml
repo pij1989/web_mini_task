@@ -34,6 +34,11 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.47</version>
+        </dependency>
+        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>6.14.3</version>
@@ -48,6 +53,12 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <scope>runtime</scope>
+            <version>3.5.3</version>
         </dependency>
     </dependencies>
 
@@ -71,6 +82,25 @@
                     <username>tomcat</username>
                     <password>tomcat</password>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.5.3</version>
+                <configuration>
+                    <propertyFile>src/main/resources/database.properties</propertyFile>
+                    <propertyFileWillOverride>true</propertyFileWillOverride>
+                    <changeLogFile>src/main/resources/changeLog.xml</changeLogFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>create_database</id>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                        <phase>process-resources</phase>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

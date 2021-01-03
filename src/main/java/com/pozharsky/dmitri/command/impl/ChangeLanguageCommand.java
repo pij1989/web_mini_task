@@ -1,8 +1,8 @@
 package com.pozharsky.dmitri.command.impl;
 
 import com.pozharsky.dmitri.command.Command;
-import com.pozharsky.dmitri.constant.PagePath;
-import com.pozharsky.dmitri.constant.RequestParameter;
+import com.pozharsky.dmitri.command.PagePath;
+import com.pozharsky.dmitri.command.RequestParameter;
 import com.pozharsky.dmitri.manager.MessageManager;
 
 import javax.servlet.http.HttpServletRequest;

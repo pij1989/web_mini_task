@@ -1,4 +1,4 @@
-package com.pozharsky.dmitri.service;
+package com.pozharsky.dmitri.service.impl;
 
 public class CircleService {
     public static final CircleService INSTANCE = new CircleService();

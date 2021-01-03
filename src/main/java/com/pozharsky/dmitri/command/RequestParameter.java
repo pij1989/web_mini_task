@@ -1,4 +1,4 @@
-package com.pozharsky.dmitri.constant;
+package com.pozharsky.dmitri.command;
 
 public final class RequestParameter {
     public static final String COMMAND = "command";

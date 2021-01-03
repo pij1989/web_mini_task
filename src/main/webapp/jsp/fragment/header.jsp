@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <fmt:setLocale scope="session" value="${language}"/>
 <fmt:setBundle basename="property.text" var="text"/>
 <fmt:message key="main.title" var="title" bundle="${text}"/>
@@ -27,10 +28,24 @@
                         </div>
                     </div>
                 </form>
-                <form class="form-inline my-2 my-lg-0">
-                    <input type="hidden" name="command" value="to_login_page_command">
-                    <fmt:message key="header.button.signin" var="signin" bundle="${text}"/>
-                    <button class="btn btn-outline-success mx-2 my-2 my-sm-0" type="submit">${signin}</button>
+                <c:choose>
+                    <c:when test="${isAuthentication}">
+                        <form class="form-inline my-2 my-lg-0" action="controller">
+                            <input type="hidden" name="command" value="logout">
+                            <fmt:message key="header.button.signout" var="signout" bundle="${text}"/>
+                            <button class="btn btn-outline-success mx-2 my-2 my-sm-0" type="submit">${signout}</button>
+                        </form>
+                    </c:when>
+                    <c:otherwise>
+                        <form class="form-inline my-2 my-lg-0" action="controller">
+                            <input type="hidden" name="command" value="to_login_page_command">
+                            <fmt:message key="header.button.signin" var="signin" bundle="${text}"/>
+                            <button class="btn btn-outline-success mx-2 my-2 my-sm-0" type="submit">${signin}</button>
+                        </form>
+                    </c:otherwise>
+                </c:choose>
+                <form class="form-inline my-2 my-lg-0" action="controller">
+                    <input type="hidden" name="command" value="to_register_page_command">
                     <fmt:message key="header.button.signup" var="signup" bundle="${text}"/>
                     <button class="btn btn-outline-success mx-2 my-2 my-sm-0" type="submit">${signup}</button>
                 </form>

@@ -1,4 +1,4 @@
-package com.pozharsky.dmitri.constant;
+package com.pozharsky.dmitri.command;
 
 public final class RequestAttribute {
     public static final String SQUARE = "square";
